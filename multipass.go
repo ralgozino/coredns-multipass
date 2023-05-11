@@ -22,7 +22,7 @@ func (mp Multipass) ServeDNS(ctx context.Context, w dns.ResponseWriter, r *dns.M
 		log.Errorf("Error while getting VM list: %s", err)
 	}
 	labels := dns.SplitDomainName(req.Name())
-	if labels[0] != "" && len(vms[labels[0]]) > 0 {
+	if req.QType() == dns.TypeA && labels[0] != "" && len(vms[labels[0]]) > 0 {
 		m := new(dns.Msg)
 		m.SetReply(r)
 		m.Authoritative = true
