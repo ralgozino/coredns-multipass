@@ -34,6 +34,8 @@ func (mp Multipass) ServeDNS(ctx context.Context, w dns.ResponseWriter, r *dns.M
 
 		w.WriteMsg(m)
 		return dns.RcodeSuccess, nil
+	} else {
+		log.Debugf("Got unsupported request: %v", req)
 	}
 
 	// Call the next plugin in the chain
