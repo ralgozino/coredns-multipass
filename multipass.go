@@ -19,7 +19,7 @@ func (mp Multipass) ServeDNS(ctx context.Context, w dns.ResponseWriter, r *dns.M
 	var log = clog.NewWithPlugin("multipass")
 	vms, err := vmList()
 	if err != nil {
-		log.Fatalf("Error while getting VM list: %s", err)
+		log.Errorf("Error while getting VM list: %s", err)
 	}
 	labels := dns.SplitDomainName(req.Name())
 	if labels[0] != "" && len(vms[labels[0]]) > 0 {
