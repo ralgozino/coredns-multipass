@@ -23,6 +23,7 @@ func (mp Multipass) ServeDNS(ctx context.Context, w dns.ResponseWriter, r *dns.M
 	}
 	labels := dns.SplitDomainName(req.Name())
 	if req.QType() == dns.TypeA && labels[0] != "" && len(vms[labels[0]]) > 0 {
+		log.Debugf("Got request of type %s, searching for VM with name %s", req.Type(), labels[0])
 		m := new(dns.Msg)
 		m.SetReply(r)
 		m.Authoritative = true
@@ -35,7 +36,7 @@ func (mp Multipass) ServeDNS(ctx context.Context, w dns.ResponseWriter, r *dns.M
 		w.WriteMsg(m)
 		return dns.RcodeSuccess, nil
 	} else {
-		log.Debugf("Got unsupported request: %v", req)
+		log.Debugf("Received unsupported request: %v", req)
 	}
 
 	// Call the next plugin in the chain

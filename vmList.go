@@ -34,7 +34,6 @@ func vmList() (map[string][]string, error) {
 	}
 
 	for i := range list.List {
-		fmt.Println(list.List[i].IPv4[0])
 		vmList[list.List[i].Name] = list.List[i].IPv4
 	}
 	return vmList, nil
