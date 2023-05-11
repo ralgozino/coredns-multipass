@@ -1,4 +1,4 @@
-module github.com/ralgozino/corends-multipass
+module github.com/ralgozino/coredns-multipass
 
 go 1.20
 
