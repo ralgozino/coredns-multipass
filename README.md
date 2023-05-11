@@ -77,3 +77,18 @@ primary.example.org.	3600	IN	A	192.168.64.127
 ;; WHEN: Thu May 11 16:27:51 CEST 2023
 ;; MSG SIZE  rcvd: 83
 ```
+
+### Remote multipass
+
+You tell the multipass client to connect to a remote multipass daemon by setting the `MULTIPASS_SERVER_ADDRESS=<hostname:port>` environment variable. Setting the environment variable while starting CoreDNS will also work:
+
+```console
+$ MULTIPASS_SERVER_ADDRESS=<hostname:port> coredns [parameters]
+```
+
+You might need to set client authentication for it to work.
+
+References:
+
+- <https://multipass.run/docs/how-to-use-multipass-remotely-a-preview>
+- <https://multipass.run/docs/authenticating-clients>
