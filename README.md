@@ -18,6 +18,21 @@ multipass uses macos' virtualization framework to create the virtual machines. T
 
 Using CoreDNS as resolver for your machine, allows you to have more flexibility and the multipass plugins gives you automatic DNS resolution for all the machines managed by multipass.
 
+## Compilation
+
+The plugin should be used as an external plugin:
+
+1. `go get github.com/ralgozino/coredns-multipass`
+2. download CoreDNS source code
+3. add `multipass:github.com/ralgozino/coredns-multipass` to `plugin.cfg`
+4. build CoreDNS.
+
+> Notice that the order of the plugins in `plugin.cfg` is the order in which they will be run.
+
+## Ready
+
+This plugin reports readiness to the ready plugin. It will be ready only when it has successfully retrieved a list of VMs from multipass.
+
 ## Examples
 
 Consider the following `Corefile`:
