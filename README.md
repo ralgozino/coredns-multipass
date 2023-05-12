@@ -6,7 +6,7 @@
 
 ## Description
 
-The *multipass* plugin adds `A` records to a zone for all the VMs managed by multipass.
+The *multipass* plugin adds `A` records to a zone for all the VMs managed by Canonical's multipass.
 
 The plugin will match the first part of the request to the VM name and use the first IPv4 address of the VM as `A` record in the response (it could be possible to answer all the IPs, but I do not need it).
 
@@ -80,7 +80,7 @@ primary.example.org.	3600	IN	A	192.168.64.127
 
 ### Remote multipass
 
-You tell the multipass client to connect to a remote multipass daemon by setting the `MULTIPASS_SERVER_ADDRESS=<hostname:port>` environment variable. Setting the environment variable while starting CoreDNS will also work:
+You can tell the multipass client to connect to a remote multipass daemon by setting the `MULTIPASS_SERVER_ADDRESS=<hostname:port>` environment variable. Setting the environment variable while starting CoreDNS will also work:
 
 ```console
 $ MULTIPASS_SERVER_ADDRESS=<hostname:port> coredns [parameters]
